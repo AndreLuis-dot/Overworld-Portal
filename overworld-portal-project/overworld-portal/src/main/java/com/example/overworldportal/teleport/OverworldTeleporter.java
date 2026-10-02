@@ -11,15 +11,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Function;
 
-// PASSO 7: o ITeleporter do Forge define ONDE a entidade aparece e o que acontece no teleporte.
+// PASSO 7: o ITeleporter do Forge define ONDE a entidade aparece depois de trocar de dimensão.
+//
+// Obs.: como esta classe NÃO é o PortalForcer do vanilla, isVanilla() já retorna false e o Forge
+// não dispara os créditos finais quando um jogador vai do End para o Overworld.
 public class OverworldTeleporter implements ITeleporter {
-
-    // IMPORTANTE: por padrão é true. Sem isso, um jogador vindo do End para o Overworld
-    // dispararia os créditos finais do jogo, como o portal original faz.
-    @Override
-    public boolean playerWinsGame() {
-        return false;
-    }
 
     // Aqui escolhemos o ponto de chegada. "defaultPortalInfo" é o cálculo vanilla, que ignoramos.
     @Nullable
